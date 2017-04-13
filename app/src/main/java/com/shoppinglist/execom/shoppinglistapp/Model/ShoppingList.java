@@ -1,15 +1,12 @@
 package com.shoppinglist.execom.shoppinglistapp.Model;
 
-import com.shoppinglist.execom.shoppinglistapp.Interfaces.AddValue;
-
 import java.util.ArrayList;
-import java.util.HashMap;
 
 /**
  * Created by mihajlo on 4/12/2017.
  */
 
-public class ShoppingList implements AddValue{
+public class ShoppingList {
     String name;
     boolean completed;
     ArrayList<ShoppingArticle> shoppingItems;
@@ -47,11 +44,5 @@ public class ShoppingList implements AddValue{
     public void setShoppingItems(ArrayList<ShoppingArticle> shoppingItems) {
         this.shoppingItems = shoppingItems;
     }
-    @Override
-    public HashMap<String,Object> toDictinaory(){
-        HashMap<String,Object> shoppingListArticleDictinaory = new HashMap<String, Object>();
-        shoppingListArticleDictinaory.put("Name", this.name);
-        shoppingListArticleDictinaory.put("Completed", completed);
-        return shoppingListArticleDictinaory;
-    }
+
 }

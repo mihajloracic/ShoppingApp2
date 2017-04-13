@@ -1,17 +1,28 @@
 package com.shoppinglist.execom.shoppinglistapp.Model;
 
-import com.shoppinglist.execom.shoppinglistapp.Interfaces.AddValue;
-
-import java.util.HashMap;
+import com.j256.ormlite.field.DatabaseField;
+import com.j256.ormlite.table.DatabaseTable;
+import com.shoppinglist.execom.shoppinglistapp.Utils.ConstantsDatabase;
 
 /**
  * Created by mihajlo on 4/12/2017.
  */
 
-public class ShoppingArticle implements AddValue{
-    String name;
-    int amount;
-    boolean completed;
+@DatabaseTable(tableName = "ShoppingArticle")
+public class ShoppingArticle  {
+
+
+    @DatabaseField(columnName = ConstantsDatabase.ID_FIELD_NAME, generatedId = true)
+    private int id;
+
+    @DatabaseField(columnName = ConstantsDatabase.ARTICLE_FIELD_NAME, foreign = false)
+    private String name;
+
+    @DatabaseField(columnName = ConstantsDatabase.AMOUNT_FIELD_NAME, foreign = false)
+    private int amount;
+
+    @DatabaseField(columnName = ConstantsDatabase.COMPLETED_FIELD_NAME, foreign = false)
+    private boolean completed;
 
     public ShoppingArticle(String name, int amount, boolean completed) {
         this.name = name;
@@ -42,13 +53,5 @@ public class ShoppingArticle implements AddValue{
     public void setCompleted(boolean completed) {
         this.completed = completed;
     }
-    @Override
-    public HashMap<String,Object> toDictinaory(){
-        HashMap<String,Object> shopingArticleDictinaory = new HashMap<String, Object>();
-        shopingArticleDictinaory.put("Name", this.name);
-        shopingArticleDictinaory.put("Amout" , this.amount);
-        shopingArticleDictinaory.put("Completed", completed);
 
-        return shopingArticleDictinaory;
-    }
 }

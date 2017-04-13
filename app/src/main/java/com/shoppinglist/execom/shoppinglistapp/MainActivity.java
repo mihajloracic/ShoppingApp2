@@ -31,8 +31,13 @@ public class MainActivity extends AppCompatActivity {
 
     @AfterViews
     void setActivity(){
-        populateData();
-        setupAdapter();
+        //setUpDatabase();
+        //populateData();
+        //setupAdapter();
+    }
+
+    void setUpDatabase(){
+        //DatabaseHelper databaseHelper = new DatabaseHelper(this);
     }
 
     void setupAdapter(){
