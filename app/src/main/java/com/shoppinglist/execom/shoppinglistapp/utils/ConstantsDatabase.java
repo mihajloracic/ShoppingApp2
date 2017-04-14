@@ -1,4 +1,4 @@
-package com.shoppinglist.execom.shoppinglistapp.Utils;
+package com.shoppinglist.execom.shoppinglistapp.utils;
 
 /**
  * Created by mihajlo on 4/13/2017.

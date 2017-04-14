@@ -1,4 +1,4 @@
-package com.shoppinglist.execom.shoppinglistapp.Model;
+package com.shoppinglist.execom.shoppinglistapp.model;
 
 import java.util.ArrayList;
 

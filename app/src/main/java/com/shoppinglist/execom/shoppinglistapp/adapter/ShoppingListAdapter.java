@@ -1,4 +1,4 @@
-package com.shoppinglist.execom.shoppinglistapp.Adapter;
+package com.shoppinglist.execom.shoppinglistapp.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -7,25 +7,26 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
-import com.shoppinglist.execom.shoppinglistapp.Model.ShoppingList;
+import com.shoppinglist.execom.shoppinglistapp.model.ShoppingList;
 import com.shoppinglist.execom.shoppinglistapp.R;
+
+import org.androidannotations.annotations.EBean;
 
 import java.util.ArrayList;
 
 /**
  * Created by mihajlo on 4/12/2017.
  */
-
+@EBean
 public class ShoppingListAdapter extends BaseAdapter {
-
 
     private ArrayList<ShoppingList> items;
 
     private Context context;
 
-    public ShoppingListAdapter(ArrayList<ShoppingList> items, Context context) {
-        this.items = items;
+    public ShoppingListAdapter(Context context) {
         this.context = context;
+        items = new ArrayList<ShoppingList>();
     }
 
     public ArrayList<ShoppingList> getItems() {

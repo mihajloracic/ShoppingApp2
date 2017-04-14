@@ -1,4 +1,4 @@
-package com.shoppinglist.execom.shoppinglistapp.Database;
+package com.shoppinglist.execom.shoppinglistapp.database;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
@@ -7,14 +7,13 @@ import android.util.Log;
 import com.j256.ormlite.android.apptools.OrmLiteSqliteOpenHelper;
 import com.j256.ormlite.support.ConnectionSource;
 import com.j256.ormlite.table.TableUtils;
-import com.shoppinglist.execom.shoppinglistapp.Model.ShoppingArticle;
+import com.shoppinglist.execom.shoppinglistapp.model.ShoppingArticle;
 
 import java.sql.SQLException;
 
 /**
  * Created by mihajlo on 4/13/2017.
  */
-
 public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
 
    private static final String TAG = DatabaseHelper.class.getSimpleName();
