@@ -57,7 +57,6 @@ public class ShoppingArticleListAdapter extends BaseAdapter{
         TextView itemPrice = (TextView) convertView.findViewById(R.id.article_complete);
 
         itemName.setText(shoppingList.getName());
-        itemPrice.setText(shoppingList.isCompleted() ? "Completed" : "Not completed");
 
         return convertView;
     }

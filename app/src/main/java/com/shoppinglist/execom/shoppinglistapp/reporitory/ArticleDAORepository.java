@@ -28,6 +28,7 @@ public class ArticleDAORepository {
     public void create(ShoppingArticle shoppingArticle) {
         shoppingArticleDAO.create(shoppingArticle);
         preferences.id().put(shoppingArticle.getId());
+
     }
     public List<ShoppingArticle> findAll(){
         final List<ShoppingArticle> articles = shoppingArticleDAO.queryForAll();

@@ -17,6 +17,7 @@ import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Bean;
 import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EActivity;
+import org.androidannotations.annotations.OnActivityResult;
 import org.androidannotations.annotations.ViewById;
 import org.androidannotations.annotations.sharedpreferences.Pref;
 import org.androidannotations.ormlite.annotations.OrmLiteDao;
@@ -55,11 +56,17 @@ public class MainActivity extends AppCompatActivity {
 
     @Click(R.id.add_article)
     void addArticleClicked(){
-        NewArticle_.intent(this).start();
+        NewArticle_.intent(this).startForResult(0);
     }
+
 
     @AfterViews
     void setActivity(){
+        setupAdapter();
+    }
+
+    @OnActivityResult(0)
+    void refreshListView(){
         setupAdapter();
     }
 
@@ -67,6 +74,7 @@ public class MainActivity extends AppCompatActivity {
         shoppingItemsList = new ArrayList<>(articleDAORepository.findAll());
         shoppingListAdapter.setItems(shoppingItemsList);
         shoppListView.setAdapter(shoppingListAdapter);
+
     }
 
 }
