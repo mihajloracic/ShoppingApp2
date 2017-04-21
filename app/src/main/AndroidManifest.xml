@@ -5,13 +5,14 @@
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
-        android:label="@string/app_name"
+        android:label="Easy shopping"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".MainActivity_"
-            android:label="@string/app_name"
+            android:name=".view.ShoppingLists_"
+            android:label="Easy shopping"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -19,7 +20,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".view.NewArticle_"></activity>
+        <activity android:name=".MainActivity_" android:screenOrientation="portrait"/>
+        <activity android:name=".view.NewShoppingList_" android:screenOrientation="portrait"/>
+        <activity android:name=".view.ArticleList_" android:screenOrientation="portrait"/>
+        <activity android:name=".view.NewArticle_" android:screenOrientation="portrait"/>
+        <activity android:name=".view.EditArticle_" android:screenOrientation="portrait"/>
     </application>
 
 </manifest>

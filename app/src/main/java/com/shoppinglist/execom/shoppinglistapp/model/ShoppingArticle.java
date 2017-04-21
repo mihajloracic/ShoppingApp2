@@ -11,7 +11,7 @@ import com.shoppinglist.execom.shoppinglistapp.utils.ConstantsDatabase;
 @DatabaseTable(tableName = "shopping_article")
 public class ShoppingArticle  {
 
-    @DatabaseField(columnName = ConstantsDatabase.ID_FIELD_NAME, generatedId = true)
+    @DatabaseField(columnName = ConstantsDatabase.ARTICLE_ID, generatedId = true)
     private int id;
 
     @DatabaseField(columnName = ConstantsDatabase.ARTICLE_FIELD_NAME, foreign = false)

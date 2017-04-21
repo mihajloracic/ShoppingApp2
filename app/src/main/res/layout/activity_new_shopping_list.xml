@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <android.support.design.widget.TextInputEditText
+        android:layout_margin="5dp"
+        android:padding="5dp"
+        android:textSize="25dp"
+        android:maxLines="1"
+        android:hint="Type shopping list name..."
+        android:id="@+id/shopping_list_name"
+        android:layout_width="match_parent"
+        android:textColor="@color/primary_text"
+        android:layout_height="wrap_content"/>
+
+    <android.support.v7.widget.AppCompatButton
+        android:layout_margin="5dp"
+        android:padding="5dp"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:text="Add shopping list!"
+        android:id="@+id/add_shopping_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="5dp"/>
+
+</RelativeLayout>

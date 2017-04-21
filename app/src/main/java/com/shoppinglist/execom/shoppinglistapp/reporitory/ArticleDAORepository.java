@@ -3,12 +3,12 @@ package com.shoppinglist.execom.shoppinglistapp.reporitory;
 import com.shoppinglist.execom.shoppinglistapp.database.DatabaseHelper;
 import com.shoppinglist.execom.shoppinglistapp.database.dao.ShoppingArticleDAO;
 import com.shoppinglist.execom.shoppinglistapp.model.ShoppingArticle;
-import com.shoppinglist.execom.shoppinglistapp.utils.Preferences_;
+import com.shoppinglist.execom.shoppinglistapp.utils.ConstantsDatabase;
 
 import org.androidannotations.annotations.EBean;
-import org.androidannotations.annotations.sharedpreferences.Pref;
 import org.androidannotations.ormlite.annotations.OrmLiteDao;
 
+import java.sql.SQLException;
 import java.util.List;
 
 /**
@@ -17,21 +17,57 @@ import java.util.List;
 @EBean
 public class ArticleDAORepository {
 
-    @Pref
-    Preferences_ preferences;
-
-
     @OrmLiteDao(helper = DatabaseHelper.class)
-    ShoppingArticleDAO shoppingArticleDAO;
+    public ShoppingArticleDAO shoppingArticleDAO;
 
 
     public void create(ShoppingArticle shoppingArticle) {
         shoppingArticleDAO.create(shoppingArticle);
-        preferences.id().put(shoppingArticle.getId());
-
     }
+
     public List<ShoppingArticle> findAll(){
         final List<ShoppingArticle> articles = shoppingArticleDAO.queryForAll();
         return articles;
+    }
+
+    public String getNameById(String articleId){
+        try {
+            ShoppingArticle shoppingArticle = shoppingArticleDAO.queryBuilder().where().eq(ConstantsDatabase.ARTICLE_ID,articleId).queryForFirst();
+            if(shoppingArticle != null){
+                return shoppingArticle.getName();
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public void delete(int articleId){
+        ShoppingArticle shoppingArticle = shoppingArticleDAO.queryForId(new Long(articleId));
+        shoppingArticleDAO.delete(shoppingArticle);
+    }
+
+    public int getIdByName(String articleId){
+        try {
+            ShoppingArticle shoppingArticle = shoppingArticleDAO.queryBuilder().where().eq(ConstantsDatabase.ARTICLE_FIELD_NAME,articleId).queryForFirst();
+            if(shoppingArticle != null){
+                return shoppingArticle.getId();
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return -1;
+    }
+    public void edit(int articleID, String name){
+        ShoppingArticle shoppingArticle = shoppingArticleDAO.queryForId(new Long(articleID));
+        shoppingArticle.setName(name);
+        shoppingArticleDAO.update(shoppingArticle);
+    }
+    public ShoppingArticleDAO getShoppingArticleDAO() {
+        return shoppingArticleDAO;
+    }
+
+    public void setShoppingArticleDAO(ShoppingArticleDAO shoppingArticleDAO) {
+        this.shoppingArticleDAO = shoppingArticleDAO;
     }
 }

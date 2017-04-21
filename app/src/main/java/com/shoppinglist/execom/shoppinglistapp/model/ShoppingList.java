@@ -1,15 +1,29 @@
 package com.shoppinglist.execom.shoppinglistapp.model;
 
+import com.j256.ormlite.field.DatabaseField;
+import com.j256.ormlite.table.DatabaseTable;
+import com.shoppinglist.execom.shoppinglistapp.utils.ConstantsDatabase;
+
 import java.util.ArrayList;
 
 /**
  * Created by mihajlo on 4/12/2017.
  */
-
+@DatabaseTable(tableName = "shopping_list")
 public class ShoppingList {
+
+    @DatabaseField(columnName = ConstantsDatabase.ARTICLE_LIST_ID, generatedId = true)
+    private int id;
+
+    @DatabaseField(columnName = ConstantsDatabase.ARTICLE_LIST_FIELD_NAME)
     String name;
+
+    @DatabaseField(columnName = ConstantsDatabase.COMPLETED_SHOPPING_LIST)
     boolean completed;
+
     ArrayList<ShoppingArticle> shoppingItems;
+
+    public ShoppingList(){ }
 
     public ShoppingList(String name, boolean completed, ArrayList<ShoppingArticle> shoppingItems) {
         this.name = name;
@@ -45,4 +59,21 @@ public class ShoppingList {
         this.shoppingItems = shoppingItems;
     }
 
+    public int getId() {
+        return id;
+    }
+
+    @Override
+    public String toString() {
+        return "ShoppingList{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", completed=" + completed +
+                ", shoppingItems=" + shoppingItems +
+                '}';
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 }

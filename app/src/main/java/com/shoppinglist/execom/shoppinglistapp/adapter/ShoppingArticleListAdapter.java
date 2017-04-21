@@ -54,7 +54,6 @@ public class ShoppingArticleListAdapter extends BaseAdapter{
         }
 
         TextView itemName = (TextView) convertView.findViewById(R.id.article_name);
-        TextView itemPrice = (TextView) convertView.findViewById(R.id.article_complete);
 
         itemName.setText(shoppingList.getName());
 

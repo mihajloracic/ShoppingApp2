@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.shoppinglist.execom.shoppinglistapp.model.ShoppingList;
@@ -68,12 +69,10 @@ public class ShoppingListAdapter extends BaseAdapter {
             convertView = LayoutInflater.from(context).inflate(R.layout.shoppig_list, parent, false);
         }
 
-        TextView itemName = (TextView) convertView.findViewById(R.id.list_name);
-        TextView itemPrice = (TextView) convertView.findViewById(R.id.list_complete);
-
+        TextView itemName = (TextView) convertView.findViewById(R.id.ad_shopping_list_name);
+        ImageView completedImage = (ImageView) convertView.findViewById(R.id.ad_list_completed_image);
         itemName.setText(shoppingList.getName());
-        itemPrice.setText(shoppingList.isCompleted() ? "Completed" : "Not completed");
-
+        completedImage.setImageResource(shoppingList.isCompleted() ? R.drawable.ic_check_black_24dp : R.drawable.ic_clear_black_24dp);
         return convertView;
     }
 

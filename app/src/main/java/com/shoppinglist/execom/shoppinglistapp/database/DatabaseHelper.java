@@ -8,6 +8,8 @@ import com.j256.ormlite.android.apptools.OrmLiteSqliteOpenHelper;
 import com.j256.ormlite.support.ConnectionSource;
 import com.j256.ormlite.table.TableUtils;
 import com.shoppinglist.execom.shoppinglistapp.model.ShoppingArticle;
+import com.shoppinglist.execom.shoppinglistapp.model.ShoppingList;
+import com.shoppinglist.execom.shoppinglistapp.model.ShoppingListArticle;
 
 import java.sql.SQLException;
 
@@ -16,7 +18,7 @@ import java.sql.SQLException;
  */
 public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
 
-   private static final String TAG = DatabaseHelper.class.getSimpleName();
+    private static final String TAG = DatabaseHelper.class.getSimpleName();
 
     private static final String DATABASE_NAME = "shoppinglist.db";
 
@@ -29,7 +31,9 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase database, ConnectionSource connectionSource) {
         try {
+            TableUtils.createTable(connectionSource, ShoppingList.class);
             TableUtils.createTable(connectionSource, ShoppingArticle.class);
+            TableUtils.createTable(connectionSource, ShoppingListArticle.class);
         } catch (SQLException e) {
             Log.e(TAG,e.getMessage(),e);
         }
@@ -39,6 +43,8 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
     public void onUpgrade(SQLiteDatabase database, ConnectionSource connectionSource, int oldVersion, int newVersion) {
         try {
             TableUtils.dropTable(connectionSource,ShoppingArticle.class,true);
+            TableUtils.dropTable(connectionSource, ShoppingList.class,true);
+            TableUtils.dropTable(connectionSource, ShoppingListArticle.class,true);
         } catch (SQLException e) {
             Log.e(TAG,e.getMessage(),e);
         }
